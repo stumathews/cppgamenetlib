@@ -1,7 +1,7 @@
 #include <cppgamelib/events/EventManager.h>
 #include <cppgamelib/file/Logger.h>
 
-#include "ReliableUdpGameServerConnection.h"
+//#include "ReliableUdpGameServerConnection.h"
 #include "Networking.h"
 #include "PacketDatumUtils.h"
 #include "EventFactory.h"

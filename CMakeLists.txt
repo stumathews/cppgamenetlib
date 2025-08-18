@@ -129,7 +129,7 @@ find_package(SDL2_ttf CONFIG REQUIRED)
 find_package(SDL2_mixer REQUIRED)
 find_package(SDL2_image REQUIRED)
 
-# Set a few properties for the library 
+# Set a few properties for the library  
 set_target_properties(cppgamenetlib PROPERTIES LINKER_LANGUAGE CXX)
 
 # Link to external dependencies
