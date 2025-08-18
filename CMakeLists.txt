@@ -134,12 +134,11 @@ set_target_properties(cppgamenetlib PROPERTIES LINKER_LANGUAGE CXX)
 
 # Link to external dependencies
 target_link_libraries(cppgamenetlib 
-PUBLIC
+PRIVATE
 SDL2::SDL2
 SDL2_ttf::SDL2_ttf
 SDL2_mixer::SDL2_mixer
 SDL2_image::SDL2_image
-PRIVATE
 GTest::gmock_main 
 winmm
 cppgamelib::cppgamelib
@@ -161,15 +160,13 @@ Tests/NetworkingTests.cpp
 # Set the properties for the test executables
 set_target_properties(AllTests PROPERTIES LINKER_LANGUAGE CXX)
 
-# Set the include directories for the test executables
-target_include_directories(AllTests PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Tests)
-
 # Link libraries that the test AllTests exeutable uses
 target_link_libraries(AllTests 
 PRIVATE 
 cppgamelib::cppgamelib
 cppgamenetlib
 unofficial-sodium::sodium
+PRIVATE
 GTest::gmock_main
 winmm 
 
