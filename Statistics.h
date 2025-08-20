@@ -3,7 +3,7 @@
 #define STATISTICS_H
 #include <vector>
 
-namespace gamelib
+namespace gamenetlib
 {
 	struct Statistics
 	{

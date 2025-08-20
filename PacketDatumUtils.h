@@ -36,7 +36,7 @@ namespace gamenetlib
 		static Rtt CalculateRttStats(const Message& message, RingBuffer<PacketDatum>& sendBuffer)
 		{
 			const auto* datum = sendBuffer.Get(message.Header.Sequence);
-			const auto sma3 = gamelib::Statistics::SMA(3, GetLastKRtts(3, sendBuffer));
+			const auto sma3 = gamenetlib::Statistics::SMA(3, GetLastKRtts(3, sendBuffer));
 			return Rtt(datum->RttMs, sma3);
 		}
 	};

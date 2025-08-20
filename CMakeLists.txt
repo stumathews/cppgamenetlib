@@ -155,6 +155,8 @@ tests/RingBufferTests.cpp
 tests/ReliableUdpTests.cpp
 tests/SecurityTests.cpp
 Tests/NetworkingTests.cpp
+Tests/SerializationTests.cpp
+Tests/StatisticsTests.cpp
 )
 
 # Set the properties for the test executables
