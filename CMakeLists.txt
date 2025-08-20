@@ -54,7 +54,7 @@ add_library(cppgamenetlib::cppgamenetlib ALIAS cppgamenetlib)
 
 target_sources(cppgamenetlib
  PUBLIC
-  FILE_SET api
+  FILE_SET public_headers
   TYPE HEADERS
   FILES
 BitFiddler.h
@@ -187,11 +187,23 @@ add_custom_command(
 add_test(NAME MainTests COMMAND AllTests WORKING_DIRECTORY $<TARGET_FILE_DIR:AllTests>)
 
 
-install(TARGETS cppgamenetlib 
-EXPORT cppgamenetlib # produce target exports for this target
-FILE_SET api 
-DESTINATION include/cppgamenetlib
-INCLUDES DESTINATION include)
+install(
+    TARGETS cppgamenetlib 
+        EXPORT cppgamenetlib # produce target exports for this target
+    RUNTIME 
+        DESTINATION ${CMAKE_INSTALL_BINDIR}
+    LIBRARY 
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    ARCHIVE 
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    FILE_SET public_headers
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}    
+    # Special case: All the directories given after INCLUDES DESTINATION are added to the 
+    # INTERFACE_INCLUDE_DIRECTORIES property of each installed target listed - so we've effectively 
+    # set the include directories for the installed targets (just our library), not need to do it explcitly via target_include_directories()
+    INCLUDES 
+     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
 
 # Create/write the targets exports to the specified file name in the lib directory (as this is where downstream packages look for it via find_package())
 
